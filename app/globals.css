@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/*
+ * YESHU — Architectural Stone & Shadow
+ * Palette derived from the Yeshu Meridian identity: champagne bone,
+ * deep monolith black and a restrained slate accent.
+ */
+@theme {
+  --color-bone: #f4f2ee;
+  --color-chalk: #faf9f6;
+  --color-stone: #e2dfd9;
+  --color-stone-dim: #b8b5b0;
+  --color-basalt: #121211;
+  --color-basalt-deep: #0c0c0e;
+  --color-basalt-2: #141416;
+  --color-ink: #1a1a19;
+  --color-limestone: #6e6c67;
+  --color-hairline: #d9d6d0;
+  --color-bronze: #8c7355;
+  --color-slate: #5b6e7a;
+  --color-slate-light: #7c919f;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+  --font-brand: var(--font-oxanium), "Oxanium", var(--font-inter), sans-serif;
+
+  --ease-architect: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-radius: 0 !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-slate);
+    color: var(--color-chalk);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--color-slate);
+    outline-offset: 3px;
+  }
+
+  input,
+  select,
+  textarea {
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.45;
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 1ms !important;
+      animation-duration: 1ms !important;
+    }
+  }
+}
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@utility field-line {
+  width: 100%;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #cfccc6;
+  background: transparent;
+  padding: 0.75rem 0;
+  font-size: 15px;
+  color: var(--color-ink);
+  outline: none;
+  transition: border-color 500ms var(--ease-architect);
+  &::placeholder {
+    color: #a3a09a;
+  }
+  &:focus {
+    border-color: var(--color-ink);
+  }
+}
+
